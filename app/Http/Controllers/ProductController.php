@@ -47,11 +47,10 @@ class ProductController extends Controller
 		echo json_encode($res);
 	}
 
-	public function remove(Request $request,$id) {
+	public function remove(Request $request, $id) {
 
 		$product = new \App\Product();
-		$res = $product->removeProduct($id);
-
+		$product->removeProduct($id);
 		$res = $product->getProducts();
 
 		echo json_encode($res);

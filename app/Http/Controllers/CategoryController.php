@@ -38,11 +38,21 @@ class CategoryController extends Controller
 		echo response()->json($res, 200);
 	}
 
-	public function delete($id) {
+	public function active(Request $request, $id) {
 
 		$category = new \App\Category();
-		$category->deleteCategory($id);
+		$category->activeCategory($id);
+		$res = $category->getCategories();
 
-		return 204;
+		echo json_encode($res);
+	}
+
+	public function remove(Request $request, $id) {
+
+		$category = new \App\Category();
+		$category->removeCategory($id);
+		$res = $category->getCategories();
+
+		echo json_encode($res);
 	}
 }
