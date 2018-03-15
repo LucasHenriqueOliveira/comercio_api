@@ -38,11 +38,22 @@ class ProductController extends Controller
 		echo response()->json($res, 200);
 	}
 
-	public function delete($id) {
+	public function active(Request $request, $id) {
 
 		$product = new \App\Product();
-		$product->deleteProduct($id);
+		$product->activeProduct($id);
+		$res = $product->getProducts();
 
-		return 204;
+		echo json_encode($res);
+	}
+
+	public function remove(Request $request,$id) {
+
+		$product = new \App\Product();
+		$res = $product->removeProduct($id);
+
+		$res = $product->getProducts();
+
+		echo json_encode($res);
 	}
 }

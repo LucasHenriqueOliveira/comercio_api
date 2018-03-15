@@ -24,7 +24,11 @@ class Product extends Model
 		return DB::update('UPDATE `product` SET `category` = ?, `name` = ?, `price_cost` = ?, `price_sale` = ?, `stock` = ?, `description` = ? WHERE `id` = ?', [$request['category'], $request['name'], $request['price_cost'], $request['price_sale'], $request['stock'], $request['description'], $id]);
 	}
 
-	public function deleteProduct($id) {
+	public function removeProduct($id) {
 		return DB::update('UPDATE `product` SET `active` = 0 WHERE `id` = ?', [$id]);
+	}
+
+	public function activeProduct($id) {
+		return DB::update('UPDATE `product` SET `active` = 1 WHERE `id` = ?', [$id]);
 	}
 }
